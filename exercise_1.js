@@ -1,13 +1,16 @@
 input = prompt();
 inputConverted = +input;
 
-console.log("Type: " + typeof(inputConverted));
+// console.log("Type: " + typeof(inputConverted));
 
-if (typeof(inputConverted) == 'number') {
-  if (isNaN(inputConverted)) console.log("NaN");
-
-  console.log(inputConverted % 2 == 0 ? console.log("Четное") : console.log("Нечетное"))
-
+if (input !== null && typeof(inputConverted) === 'number' && !isNaN(inputConverted)) {
+  console.log(inputConverted % 2 == 0 ? "Четное" : "Нечетное");
 } else {
-  console.log("Упс, кажется, вы ошиблись")
+  console.log("Упс, кажется, вы ошиблись");
 }
+
+// Есть несколько недочётов в работе кода:
+// 1. Не обработана ситуация, когда пользователь нажимает Отмена в окне ввода. В таком случае значение в input будет равно null. Сейчас в такой ситуации выводится "Чётное", что не совсем правильно
+// 2. По заданию, если введено не число, нужно выводить сообщение об ошибке, сейчас выводится NaN
+// 3. При выводе сообщения "четное\нечетное" у вас внутри console.log стоит ещё один console.log. Из-за этого в консоль каждый раз выводится ещё и undefined.
+// Исправила выше на более правильный вариант
